@@ -1,0 +1,64 @@
+#include<stdio.h>
+void push(int *top,int ele,int s[],int size){
+ if (*top==size-1){
+    printf("stack overflow \n");
+ }else{
+     (*top)++;
+     s[*top]=ele;
+ }
+ }
+ int pop(int *top,int s[]){
+ if (*top==-1){
+    printf("stack underflow");
+ }else{
+  int item=s[*top];
+  (*top)--;
+  return item;
+ }}
+ void display(int *top,int s[],int size){
+ if (*top==-1){
+    printf("stack underflow, can't display");
+ }else{
+  for(int i;i<=*top;i++){
+    printf("\n%d\n",s[i]);
+  }
+ }
+ }
+void main(){
+ int size,top=-1;
+ printf("enter the size of the stack\n");
+ scanf("%d",&size);
+ int s[size];
+ int choice,ele,x;
+
+ while(1)
+ { printf("enter 1 for insert,\n 2 for delete,\n 3 for display\n");
+   scanf("%d",&choice);
+   switch(choice)
+{
+   case 1:{
+       printf("enter the element to insert\n");
+       scanf("%d",&ele);
+       push(&top,ele,s,size);
+
+       break;}
+   case 2 :{
+       printf("%d",pop(&top,s));
+       break;}
+   case 3:{
+       display(&top,s,size);
+        break;}
+   default:{
+       printf("invalid input \n");
+        break;
+
+           }
+}
+  printf("\n enter 1 to continue ");
+scanf("%d",&x);
+if(x!=1)
+    break;
+ }
+
+}
+
