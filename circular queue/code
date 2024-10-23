@@ -1,0 +1,82 @@
+#include<stdio.h>
+void insert(int q[],int *count,int *rear,int value,int Qsize){
+if(*count>=Qsize){
+    printf(" queue overflow can't dispaly");
+
+}
+
+else{
+    *rear=(*rear+1)%Qsize;
+    q[*rear]=value;
+    (*count)++;
+
+}
+}
+int delete(int q[],int *front,int *count,int Qsize ){
+int del_item;
+if(*count==0){
+   printf("stack underflow \n");
+   return -1;
+   }
+   del_item=q[*front];
+   *front=(*front+1)%Qsize;
+   (*count)--;
+   return del_item;
+
+}
+void display(int q[],int *front,int *rear, int Qsize, int *count){
+int i,j;
+if (*count==0){
+    printf("queue is empty");
+
+}
+i=(*front);
+for(j=1;j<=(*count);j++){
+    printf("%d",q[i]);
+    i=(i+1)%(Qsize);
+
+}
+}
+void main(){
+int Qsize=3,q[Qsize],count=0;
+
+ int choice,rear=-1,front=0,deleted_item,value;
+
+
+    while(1)
+    {
+        printf("\nEnter the choice\n 1 for push \n 2 for delete \n 3 for display \n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+                {
+                    printf("enter the item\n");
+                    scanf("%d",&value);
+                    insert(q,&count,&rear,value,Qsize);
+                    break;
+                }
+            case 2:
+                {
+                    deleted_item=delete(q,&front,&count,Qsize);
+                    if(deleted_item!=-1)
+                        printf("%d",deleted_item);
+                    break;
+                }
+            case 3:
+                {
+                    display(q,&front,&rear,Qsize,&count);
+                    break;
+                }
+            default:
+                {
+                    printf("invalid choice \n ");
+                     printf("Name:Likhith D \n");
+    printf("USN: 1BM23CS170");
+                    exit(0);
+                }
+        }
+    }
+
+}
+
